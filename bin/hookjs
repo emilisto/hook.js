@@ -1,5 +1,5 @@
 #! /usr/bin/env node
-var Webserver = require('../lib/core').Core;
+var Webserver = require('../lib/hook').Core;
 
 var server = new Webserver({
   name: 'hook.js-server',

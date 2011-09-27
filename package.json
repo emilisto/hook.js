@@ -1,21 +1,23 @@
 {
   "author": "Marak Squires <marak.squires@gmail.com>",
-  "name": "hook.io-webserver",
-  "description": "basic hook.io enabled webserver with socket.io browser bridge",
-  "version": "0.4.0",
+  "name": "hook.js",
+  "description": "hook.js - the easiest way to build real-time web applications",
+  "version": "0.1.0",
   "repository": {
     "type": "git",
-    "url": "git://github.com/hookio/webserver.git"
+    "url": "git://github.com/Marak/hook.js.git"
   },
   "bin": {
-     "hookio-webserver": "./bin/webserver"
+     "hookjs": "./bin/hookjs"
    },
-  "main": "./lib/webserver",
+  "main": "./lib/hook",
   "engines": {
     "node": ">= v0.4.7"
   },
   "dependencies": {
     "hook.io" : "0.7.x",
+    "hook.io-webserver" : "*",
+    "hook.io-webshook" : "*",
     "dnode":  "0.6.x",
     "node-static": "0.5.x"
   },
