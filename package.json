@@ -17,7 +17,7 @@
   "dependencies": {
     "hook.io" : "0.7.x",
     "hook.io-webserver" : "*",
-    "hook.io-webshook" : "*",
+    "hook.io-webhook" : "*",
     "dnode":  "0.6.x",
     "node-static": "0.5.x"
   },
