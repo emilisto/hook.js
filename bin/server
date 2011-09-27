@@ -1,0 +1,11 @@
+#! /usr/bin/env node
+var Webserver = require('../lib/core').Core;
+
+var server = new Webserver({
+  name: 'hook.js-server',
+  port: 9000,
+  webroot: './public'
+});
+
+
+server.start();
