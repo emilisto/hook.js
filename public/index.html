@@ -6,6 +6,7 @@
 -->
 <script type="text/javascript" src="hook.js"></script>
 <script type="text/javascript" src="jquery.js"></script>
+<link rel="stylesheet" href="style.css">
 
 <script type="text/javascript">
 
@@ -46,22 +47,49 @@
 
 </head>
 <body>
-  <div>
-    <pre><code>
-      hook.js - the easiest way to build real-time web applications
+  <div class="topbar">
+    <div class="topbar-inner">
+      <div class="container-fluid">
+        <h3>
+          <a href="/">hookjs.nodejitsu.com</a>
+        </h3>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid">
+    <div class="sidebar">
+      <div class="well">
+        <h5>Current pipe: <span id="mypipe"></span></h5>
+        <ul id="pipe">
+        </ul>
+        <h5>Other available pipes:</h5>
+        <ul>
+          <li>Pipe 1</li>
+          <li>Pipe 2</li>
+          <li>Pipe 3</li>
+        </ul>
+        <h5>Available Interfaces:</h5>
+        <ul>
+          <li>Webserver (this page)</li>
+          <li>Webhook</li>
+          <li>Feed</li>
+        </ul>
+      </div>
+    </div>
+    <div class="content">
+      <pre class="well">
+        hook.js - the easiest way to build real-time web applications
 
-
-      Just include this on any page: 
+        Just include this on any page:
       
-        &lt;script type="text/javascript" src="http://hookjs.com/hook.js"&gt;&lt;/script&gt;
+          &lt;script type="text/javascript" src="http://hookjs.com/hook.js"&gt;&lt;/script&gt;
 
-      Now you have access to the "hook" object. The hook object is special object which
-      gives you the ability to seamlessly call server events from the browser and browser events from the server.
-      
-      
-    </code></pre>
+        Now you have access to the "hook" object. The hook object is special object which
+        gives you the ability to seamlessly call server events from the browser and browser events from the server.
+      </pre>
 
-    <textarea cols="80" rows="10">
+      <pre class="well">
+        <textarea cols="80" rows="10" class="span16">
 // Browser
 hook.emit('hello', function(err, result){
   // outputs 'sup'
@@ -72,34 +100,12 @@ hook.emit('hello', function(err, result){
 hook.on('hello', function(callback){
   callback(null, 'sup');
 });
-    </textarea>
-    
-    <br/>
-    
-    Current pipe: <span id="mypipe"></span> <br/>
-    
-    <ul id="pipe">
-      <li>Pipe 1 - hello</li>
-    </ul>
-    
-    <br/>
-    
-    Other available pipes: <br/>
-    <ul>
-      <li>Pipe 1</li>
-      <li>Pipe 2</li>
-      <li>Pipe 3</li>
-    </ul>
-    
-    
-    Available Interfaces to this Hook.js Server:
-    
-    <ul>
-      <li>Webserver ( this page )</li>
-      <li>Webhook</li>
-      <li>Feed</li>
-    </ul>
-    
+        </textarea>
+      </pre>
+    </div>
+    <footer>
+      <p>Copyright &copy; 2011, Hook.js</p>
+    </footer>
   </div>
 </body>
 </html>
