@@ -18,29 +18,25 @@
     Hook = new Hook();
     Hook.connect();
 
+    var channel = window.location.hash.substr(1);
+
     Hook.on('ready', function(){
 
       //
       // Remark: Use Hook.anAny to capture all Hook events for debugging
       //
       Hook.onAny(function(data){
+        var parts = this.event.split('::');
+
+        if (parts[1]==channel) {
+          $('#channel').prepend('<li>' + this.event + '</li>');
+        }
+
         $('#pipe').prepend('<li>' + this.event + '</li>');
         console.log(this.event, data);
       });
 
-      Hook.emit('hello', 'i am browser!');
-
-      //
-      // Remark: Some people enjoy getting callbacks for messages
-      //
-      Hook.emit('cakeRequest', 'Cake please?', function(err, result){
-        console.log(result);
-      });
-
-      Hook.emit('cakeRequest', 'I DEMAND CAKE', function(err, result){
-        console.log(result);
-      });
-
+      Hook.emit('channel', channel);
 
     });
 
@@ -59,6 +55,9 @@
   <div class="container-fluid">
     <div class="sidebar">
       <div class="well">
+        <h5>Channel pipe: <span id="channelpipe"></span></h5>
+        <ul id="channel">
+        </ul>
         <h5>Current pipe: <span id="mypipe"></span></h5>
         <ul id="pipe">
         </ul>
