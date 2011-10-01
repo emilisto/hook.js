@@ -32,8 +32,9 @@
           $('#channel').prepend('<li>' + this.event + '</li>');
         }
 
-        $('#pipe').prepend('<li>' + this.event + '</li>');
-        console.log(this.event, data);
+        if (parts[2]!='hook.js-server') {
+          $('#pipe').prepend('<li>' + this.event + '</li>');
+        }
       });
 
       Hook.emit('channel', channel);
