@@ -7,6 +7,12 @@
     "type": "git",
     "url": "git://github.com/Marak/hook.js.git"
   },
+  "contributors": [
+    {
+      "name": "Pavan Kumar Sunkara",
+      "email": "pavan.sss1991@gmail.com"
+    }
+  ],
   "bin": {
      "hookjs": "./bin/hookjs"
    },
