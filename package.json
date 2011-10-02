@@ -22,6 +22,7 @@
   },
   "dependencies": {
     "hook.io" : "0.7.x",
+    "hook.io-feed": "*",
     "hook.io-webserver" : "*",
     "hook.io-webhook" : "*",
     "dnode":  "0.6.x",
