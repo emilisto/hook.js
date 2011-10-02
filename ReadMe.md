@@ -12,7 +12,7 @@ Now you have access to the "hook" object. The hook object is special object whic
 gives you the ability to seamlessly call server events from the browser and browser events from the server.
 
 
-      <h3>Emitter API</h3>
+<h3>Emitter API</h3>
 
 ``` js
 // Browser
