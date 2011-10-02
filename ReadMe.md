@@ -6,7 +6,7 @@ the easiest way to build real-time web applications
 
 Just include this on any page:
 
-  <script type="text/javascript" src="hook.js"></script>
+     <script type="text/javascript" src="hook.js"></script>
 
 Now you have access to the "hook" object. The hook object is special object which
 gives you the ability to seamlessly call server events from the browser and browser events from the server.
