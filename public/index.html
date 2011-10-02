@@ -15,17 +15,17 @@
     // TODO: Move this to hook-shim, will create magic Hook namespace
     //
     var Hook = require('/hook.js').Hook;
-    Hook = new Hook();
-    Hook.connect();
+    var hook = new Hook();
+    hook.connect();
 
     var channel = window.location.hash.substr(1);
 
-    Hook.on('ready', function(){
+    hook.on('ready', function(){
 
       //
       // Remark: Use Hook.anAny to capture all Hook events for debugging
       //
-      Hook.onAny(function(data){
+      hook.onAny(function(data){
         var parts = this.event.split('::');
 
         if (parts[1]==channel) {
@@ -37,7 +37,7 @@
         }
       });
 
-      Hook.emit('channel', channel);
+      hook.emit('channel', channel);
 
     });
 
@@ -77,7 +77,7 @@
       
           &lt;script type="text/javascript" src="hook.js"&gt;&lt;/script&gt;
 
-        Now you have access to the "Hook" object. The hook object is special object which
+        Now you have access to the "hook" object. The hook object is special object which
         gives you the ability to seamlessly call server events from the browser and browser events from the server.
       </pre>
       <h3>Emitter API</h3>
