@@ -3,9 +3,10 @@ var Webserver = require('../lib/hook').Core;
 
 var server = new Webserver({
   name: 'hook.js-server',
-  port: 9000,
+  port: 9003,
   webroot: './public'
 });
 
 
 server.start();
+  
