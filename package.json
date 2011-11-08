@@ -14,7 +14,7 @@
     }
   ],
   "bin": {
-     "hookjs": "./bin/hookjs"
+     "hookjs": "./bin/server"
    },
   "main": "./lib/hook",
   "engines": {
@@ -22,9 +22,6 @@
   },
   "dependencies": {
     "hook.io" : "0.7.x",
-    "hook.io-feed": "*",
-    "hook.io-webserver" : "*",
-    "hook.io-webhook" : "*",
     "dnode":  "0.6.x",
     "node-static": "0.5.x"
   },
