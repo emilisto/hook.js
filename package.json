@@ -5,7 +5,7 @@
   "version": "0.1.0",
   "repository": {
     "type": "git",
-    "url": "git://github.com/Marak/hook.js.git"
+    "url": "git://github.com/hook.io/hook.js.git"
   },
   "contributors": [
     {
@@ -21,9 +21,7 @@
     "node": ">= v0.4.7"
   },
   "dependencies": {
-    "hook.io" : "0.7.x",
-    "dnode":  "0.6.x",
-    "node-static": "0.5.x"
+    "hook.io-webserver" : "0.8.x"
   },
   "devDependencies": {}
 }

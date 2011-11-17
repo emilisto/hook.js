@@ -1,6 +1,8 @@
 # hook.js - alpha
 
-the easiest way to build real-time web applications
+the easiest way to build real-time web applications with hook.io
+
+# How it works
 
 # Usage
 

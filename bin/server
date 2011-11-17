@@ -7,6 +7,5 @@ var server = new Webserver({
   webroot: './public'
 });
 
-
 server.start();
   
