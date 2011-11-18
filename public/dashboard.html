@@ -12,10 +12,9 @@
 
   <script type="text/javascript">
 
-    //
-    // TODO: Move this to hook-shim, will create magic Hook namespace
-    //
+    hook.on("hook::ready", function () {
 
+    });
   </script>
 </head>
 <body>
@@ -29,22 +28,23 @@
     </div>
   </div>
   <div class="container-fluid">
+    <header>
+      <h1>Dashboard:</h1>
+    </header>
     <div class="sidebar">
       <div class="well">
-        <ul id="channel">
-        </ul>
-        <h5>Event stream: <span id="mypipe"></span></h5>
-        <ul id="pipe">
-        </ul>
-        <h5>Available Interfaces:</h5>
-        <ul>
+        <h5>Listening Hooks:</h5>
+        <ul id="interfaces">
           <li>Webserver (this page)</li>
-          <li>Webhook</li>
-          <li>Feed</li>
         </ul>
       </div>
     </div>
     <div class="content">
+      <div class="well">
+        <h5>Event Stream<span id="channel"></span>:</h5>
+        <table id="pipe">
+        </table>
+      </div>
     </div>
     <footer>
       <p>hook.js</p>
