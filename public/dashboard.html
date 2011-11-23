@@ -10,6 +10,47 @@
   <script type="text/javascript" src="javascripts/ui.js"></script>
   <link rel="stylesheet" href="stylesheets/style.css">
 
+  <style type="text/css" media="screen">
+    body {
+        overflow: hidden;
+    }
+    
+    
+    #editor { 
+        margin: 0;
+        position: relative;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 0;
+        height: 400px;
+        width: 100%;
+        font-size:16px;
+        
+    }
+    
+    #serverEditor { 
+        margin: 0;
+        position: relative;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 0;
+        height: 400px;
+        width: 100%;
+        font-size:16px;
+    }
+    
+    .copy {
+      height:30px;
+      width: 400px;
+      font-size:16px;
+    }
+  </style>
+
+
   <script type="text/javascript">
 
     hook.on("hook::ready", function () {
@@ -22,7 +63,7 @@
     <div class="topbar-inner">
       <div class="container-fluid">
         <h3>
-          <a href="/">hook.js</a>
+          <a href="/">hook.js - the easiest way to build real-time web applications</a>
         </h3>
       </div>
     </div>
@@ -38,13 +79,80 @@
           <li>Webserver (this page)</li>
         </ul>
       </div>
-    </div>
-    <div class="content">
       <div class="well">
         <h5>Event Stream<span id="channel"></span>:</h5>
         <table id="pipe">
         </table>
       </div>
+    </div>
+    <div class="content">
+
+      <pre class="well">Just include this on any page: <input value='&lt;script type="text/javascript" src="hook.js"&gt;&lt;/script&gt;' class="copy"/>
+
+Now you have access to the "hook" object. The hook object is special object which
+gives you the ability to seamlessly call server events from the browser and browser events from the server.
+      </pre>
+      
+      <!-- The client-side editor -->
+      <pre id="editor" class="editor">//
+// Emitter Style
+//
+hook.emit('hello', 'there');               // send "hello" event with data "there"
+hook.on('*::hello::result', console.log);  // listen for a result ( optional )
+hook.on('*::hello::error' , console.log);  // listen for an error ( optional )
+
+//
+// Callback Style
+//
+hook.emit('hello', 'there', console.log);
+
+//
+// Listening for server messages
+//
+hook.on('*::ping', function(data, cb){
+  // outputs 'server ping'
+  console.log(result);
+  cb(null, 'browser pong')
+})
+
+</pre>
+      <pre id="serverEditor" class="editor">hook.on('*::hello', function(data, cb){
+  // outputs 'there'
+  console.log(data);
+  cb(null, 'hi');
+});
+
+setInterval(function(){
+  hook.emit('ping', 'server ping', function(result){
+    // outputs 'browser pong'
+    console.log(result);
+  });
+}, 5000)
+      </pre>
+      <script src="src/ace.js" type="text/javascript" charset="utf-8"></script>
+      <script src="src/theme-twilight.js" type="text/javascript" charset="utf-8"></script>
+      <script src="src/mode-javascript.js" type="text/javascript" charset="utf-8"></script>
+      <script>
+      window.onload = function() {
+          var JavaScriptMode = require("ace/mode/javascript").Mode;
+
+
+          var editor = ace.edit("editor");
+          editor.setTheme("ace/theme/twilight");
+          editor.getSession().setMode(new JavaScriptMode());
+
+          setTimeout(function(){
+            var serverEditor = ace.edit("serverEditor");
+            serverEditor.setReadOnly(true); 
+            serverEditor.setTheme("ace/theme/twilight");
+            serverEditor.getSession().setMode(new JavaScriptMode());
+            
+          },500)
+
+
+
+      };
+      </script>
     </div>
     <footer>
       <p>hook.js</p>

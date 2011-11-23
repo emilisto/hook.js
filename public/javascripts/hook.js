@@ -7081,3 +7081,5 @@ require.define("/node_modules/eventemitter2/lib/eventemitter2.js", function (req
 }(typeof exports === 'undefined' ? window : exports);
 
 });
+
+var Hook = require('/hook.js').Hook;

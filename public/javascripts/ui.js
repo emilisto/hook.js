@@ -14,6 +14,7 @@ var hooks = {};
 
 $(function () {
 
+  // Register available hooks
   hook.on('*::hook::ready', function (data) {
     hooks[data.name] = $('<li id="#'+data.name+'">'+data.name+'</li>');
 
@@ -24,6 +25,7 @@ $(function () {
     hooks[name].remove();
   });
 
+  // A formatting function
   var truncate = function (str, n) {
     if (typeof str === "string") {
       if (str.length < n) {
@@ -38,10 +40,19 @@ $(function () {
     }
   }
 
-
+  // Add channel name
   $('#channel').text(channel.length ? ' (Channel `' + channel +'`)' : '');
 
-  hook.onAny(function(data) {
+  // Notice for when hook starts
+  hook.on('ready', function(){
+    console.log('now the hook is ready')
+  });
+
+  hook.connect();
+
+
+  // Event stream
+  hook.onAny( function (data) {
     var parts = this.event.split('::'),
         logs = $('#pipe')[0].children[0],
         maxLength = 30;
@@ -56,8 +67,4 @@ $(function () {
       }
     }
   });
-
-
-
-  hook.connect();
 });
