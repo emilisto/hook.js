@@ -8,14 +8,13 @@ $('.content').append('<pre class="well"></pre>');
 
 
 
-var Hook = require('/hook.js').Hook;
 var hook = new Hook();
-var channel = window.location.hash.substr(1);
 
 hook.on('ready', function(){
-  
-
+  console.log('now the hook is ready')
 });
+
+hook.connect();
 
 hook.onAny(function(data){
   var parts = this.event.split('::');
@@ -31,6 +30,3 @@ hook.onAny(function(data){
   }
 });
 
-
-
-hook.connect();
