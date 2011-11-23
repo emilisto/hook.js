@@ -14,6 +14,16 @@ var hooks = {};
 
 $(function () {
 
+  // Should get a query response, right?
+  hook.on('**::query::result', function (data) {
+    console.log(data);
+  });
+
+  // Emits a query event, should get "query::result" events.
+  hook.on('hook::ready', function () {
+    hook.emit("query", { "type": "hook" });
+  });
+
   // Register available hooks
   hook.on('*::hook::ready', function (data) {
     hooks[data.name] = $('<li id="#'+data.name+'">'+data.name+'</li>');
@@ -43,11 +53,6 @@ $(function () {
   // Add channel name
   $('#channel').text(channel.length ? ' (Channel `' + channel +'`)' : '');
 
-  // Notice for when hook starts
-  hook.on('ready', function(){
-    console.log('now the hook is ready')
-  });
-
   hook.connect();
 
 
@@ -60,8 +65,21 @@ $(function () {
     if ( (channel.length && parts[1]==channel)
       || (!channel.length && parts.indexOf('browser') === -1 ) ) {
 
-      $('#pipe').prepend('<tr><td style="width: 400px;"><strong style="color: #f0f">Event: </strong>' + this.event + '</td><td><strong style="color: #444">Data: </strong>' + truncate(JSON.stringify(data), 80) + '</td></tr>');
+      // Remove the headers.
+      try {
+        $('#pipe > :first > :first').remove();
+      } catch (e) {
+        // Special case where there is no element to remove
+      }
 
+      // Prepend the new value.
+      $('#pipe').prepend('<tr><td style="width: 200px;">'
+ + $('<span>').text(this.event).text() + '</td><td>' + truncate(JSON.stringify(data), 80) + '</td></tr>');
+
+      // Add the headers back on
+      $('#pipe').prepend('<tr><th>Event:</th><th>Data:</th></tr>');
+
+      // Pop off the last element if necessary
       if (logs && (logs.children.length > maxLength)) {
         logs.removeChild(logs.children[maxLength]);
       }
