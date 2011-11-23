@@ -42,6 +42,18 @@
         font-size:16px;
     }
 
+    .content > .left {
+        width: 50%;
+        height: 400px;
+    }
+
+    .content > .right {
+        width: 50%;
+        margin-left: 52%;
+        margin-top: -400px;
+        height: inherit;
+    }
+
     .container-fluid > .sidebar {
         width: 400px;
     }
@@ -101,7 +113,9 @@ gives you the ability to seamlessly call server events from the browser and brow
       </pre>
       
       <!-- The client-side editor -->
-      <pre id="editor" class="editor">//
+      <div class="left">
+        <h1>Client-Side Code</h1>
+        <pre id="editor" class="editor">//
 // Emitter Style
 //
 hook.emit('hello', 'there');               // send "hello" event with data "there"
@@ -122,8 +136,11 @@ hook.on('*::ping', function(data, cb){
   cb(null, 'browser pong')
 })
 
-</pre>
-      <pre id="serverEditor" class="editor">hook.on('*::hello', function(data, cb){
+        </pre>
+      </div>
+      <div class="right">
+        <h1>Server-Side Code</h1>
+        <pre id="serverEditor" class="editor">hook.on('*::hello', function(data, cb){
   // outputs 'there'
   console.log(data);
   cb(null, 'hi');
@@ -135,7 +152,9 @@ setInterval(function(){
     console.log(result);
   });
 }, 5000)
-      </pre>
+        </pre>
+      </div>
+
       <script src="src/ace.js" type="text/javascript" charset="utf-8"></script>
       <script src="src/theme-twilight.js" type="text/javascript" charset="utf-8"></script>
       <script src="src/mode-javascript.js" type="text/javascript" charset="utf-8"></script>
